@@ -1,0 +1,91 @@
+<!-- INCLUDE page.header.htm -->
+
+<!-- BEGIN tree_child -->
+<div id="childs">
+<ul>
+<!-- BEGIN row -->
+	<li><a href="{row.URL}">{row.TITLE}</a></li>
+<!-- END row -->
+</ul>
+</div>
+<!-- END tree_child -->
+
+<div id="content_area">
+	<div>{V_CONTENT}</div>
+	
+	<!-- IF V_ALLOW_COMMENTS -->
+	<!-- BEGIN comments_error -->
+	<div class="error">{comments_error.MESSAGE}</div>
+	<!-- END comments_error -->
+	
+	<div id="tree_comments">
+		<!-- BEGIN comments -->
+		<ul>
+		<!-- BEGIN row -->
+		<li>{row.ID}</li>
+		<!-- END row -->
+		</ul>
+		<!-- END comments -->
+		
+		<form action="{U_COMMENTS}" method="post">
+			<input type="hidden" name="is_comment" value="1" />
+			
+			<label for="comment_username">Nombre de usuario</label>
+			<input type="text" id="comment_username" name="comment_username" size="50" />
+			<label for="comment_address">Correo electr&oacute;nico</label>
+			<input type="text" id="comment_address" name="comment_address" size="50" />
+			<label for="comment_website">Sitio web</label>
+			<input type="text" id="comment_website" name="comment_website" size="50" />
+			<label for="comment_message">Mensaje</label>
+			<textarea id="comment_message" name="comment_message" cols="50"></textarea>
+			<label for="comment_xcf">Imagen de seguridad</label>
+			<img src="{U_XCF}" alt="" />
+			<br />
+			<input type="text" id="comment_security" name="comment_security" size="50" />
+			<br /><br />
+			<input type="submit" name="submit" value="Enviar" />
+		</form>
+	</div>
+	<!-- ENDIF -->
+	
+	<!-- IF V_ALLOW_FORM -->
+	<!-- BEGIN form -->
+	<div id="form_message" class="notice" style="display: none;"></div>
+	
+	<form action="{form.URL}" method="post" id="contact_form">
+		<fieldset>
+			<!-- BEGIN row -->
+			<!-- IF row.ALIAS == 'secure' -->
+			<div id="secure_div" class="a_center m_top_mid"><img id="secure_img" src="{S_SERVER}{row.PAGE}-xs.jpg?" alt="" /></div>
+			<div id="secure_tag" class="a_center m_top_tiny">{L_FORM_SECURE_IMG}</div>
+			<div class="a_center m_top_mid">{L_FORM_SECURE_LEGEND}</div>
+			<!-- ENDIF -->
+			<dl>
+				<dt id="legend_{row.ALIAS}">{row.LEGEND}</dt>
+				<dd>
+					<!-- IF row.TYPE == 'text' -->
+					<input id="field_{row.ALIAS}"<!-- IF row.REQUIRED --> class="required"<!-- ENDIF --><!-- BEGIN attrib --> {attrib.ATTRIB}="{attrib.VALUE}"<!-- END attrib --> value="" />
+					<!-- ELSEIF row.TYPE == 'textarea' -->
+					<textarea id="field_{row.ALIAS}" class="ie-widthfix<!-- IF row.REQUIRED --> required<!-- ENDIF -->"<!-- BEGIN attrib --><!-- IF attrib.ATTRIB != 'type' --> {attrib.ATTRIB}="{attrib.VALUE}"<!-- ENDIF --><!-- END attrib --> rows="8" cols="20"></textarea>
+					<!-- ENDIF -->
+				</dd>
+			</dl>
+			<!-- END row -->
+			
+			<div class="a_center m_top_mid">
+				<input type="hidden" name="is_form" value="1" />
+				<input type="submit" name="submit" value="{L_FORM_SECURE_SEND}" class="button" />
+			</div>
+		</fieldset>
+	</form>
+	<!-- END form -->
+	<!-- ENDIF -->
+	
+	<!-- BEGIN auth -->
+	<div>
+	<!-- BEGIN row --><!-- IF row.S_ROW_COUNT -->, <!-- ENDIF --><a href="{row.U_LINK}">{row.V_NAME}</a><!-- END row -->
+	</div>
+	<!-- END auth -->
+</div>
+
+<!-- INCLUDE page.footer.htm -->

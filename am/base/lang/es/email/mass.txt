@@ -1,0 +1,11 @@
+Charset: iso-8859-1
+
+Hola {USERNAME},
+
+Te saludamos de parte de TWC Kaulitz, estas recibiendo este email porque estas suscrito a nuestra comunidad.
+
+{MESSAGE}
+
+Muchas gracias por ser parte de TWC Kaulitz.
+
+http://www.twckaulitz.com/

@@ -1,0 +1,37 @@
+<!-- INCLUDE page.header.htm -->
+
+<div class="section"><h1><a href="{U_HELP}">{L_HELP}</a><!-- BEGIN module --> &raquo; {module.HELP}<!-- END module --></h1></div>
+
+<div class="col_1 float_left">
+<!-- BEGIN cat -->
+<div class="pad_2 item_block_2">
+	<ul class="ul_none">
+		<!-- BEGIN item -->
+		<li><a class="relevant" href="{item.URL}">{item.TITLE}</a></li>
+		<!-- END item -->
+	</ul>
+</div>
+<!-- END cat -->
+</div>
+
+<div class="col_3 float_left">
+<!-- BEGIN module -->
+<div class="pad_2 item_block_2">
+	<ul class="ul_none">
+		<!-- BEGIN item -->
+		<li><a href="{item.URL}">{item.FAQ}</a></li>
+		<!-- END item -->
+	</ul>
+</div>
+<!-- END module -->
+
+<!-- BEGIN faq -->
+<div class="pad_2 item_block_2">
+	<h2 class="relevant_artist">{faq.QUESTION_ES}</h2>
+	<div class="rows5_top_2">{faq.ANSWER_ES}</div>
+	<div class="rows5_top_2"><a class="uunique" href="{faq.CAT}">{L_BACK_PREVIOUS}</a></div>
+</div>
+<!-- END faq -->
+</div>
+
+<!-- INCLUDE page.footer.htm -->

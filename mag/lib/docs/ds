@@ -1,0 +1,332 @@
+Document model
+
+Home
+	Tabs
+		Blocks
+			Modules
+				Fields
+				Data
+
+Database scheme
+
+-- news
+
+news_id
+news_active
+news_break
+news_uid
+news_alias
+news_subject
+news_excerpt
+news_content
+news_tags
+news_time
+
+-- countries
+
+country_id
+country_name
+country_utc
+
+-- genres
+
+genre_id
+genre_alias
+genre_name
+
+##################################
+
+-- sessions
+
+-- alarms
+
+alarm_id
+alarm_uid
+alarm_start
+alarm_end
+alarm_bubble
+alarm_email
+
+##################################
+
+-- bio
+
+bio_id
+bio_type
+bio_stype
+bio_active
+bio_alias
+bio_name
+bio_key
+bio_address
+bio_realname
+bio_country
+bio_registered
+bio_utc
+bio_dst
+bio_lastlogin
+bio_lastpage
+bio_gender
+bio_birthday
+bio_dateformat
+bio_logintries
+bio_massemail
+bio_tags
+
+-- bio_auth
+
+auth_id
+auth_assoc
+auth_field
+
+-- bio_auth_fields
+
+field_id
+field_alias
+field_name
+field_global
+
+-- bio_block
+
+block_id
+block_name
+
+-- bio_block_relation
+
+relation_id
+relation_bio
+relation_content
+relation_style
+relation_rows
+relation_cols
+
+-- bio_friends
+
+friend_id
+friend_assoc
+friend_bio
+friend_active
+friend_time
+friend_message
+
+-- bio_group
+
+group_id
+group_assoc
+group_bio
+group_time
+
+-- bio_rate
+
+rate_id
+rate_assoc
+rate_bio
+rate_value
+rate_time
+
+-- bio_store
+
+store_id
+store_uid
+store_field
+store_value
+
+-- bio_tab_rel
+
+rel_id
+rel_alias
+rel_name
+
+-- bio_tab
+
+tab_id
+tab_bio
+tab_rel
+tab_order
+tab_cols
+
+-- bio_modules
+
+module_id
+module_alias
+module_name
+module_layout
+module_style
+
+-- bio_modules_rel
+
+rel_id
+rel_module
+rel_bio
+rel_tab
+rel_order
+rel_name
+rel_assoc
+rel_content
+rel_style
+
+-- bio_type
+
+type_id
+type_alias
+type_name
+type_parent
+
+-- bio_fields **
+
+field_id
+field_alias
+field_name
+field_required
+field_show
+field_type
+field_relation
+
+##################################
+
+-- module_notes
+
+note_id
+note_bio
+note_subject
+note_content
+
+-- module_albums_formats
+
+format_id
+format_name
+
+-- module_albums_assoc
+
+assoc_id
+assoc_alias
+assoc_album
+
+-- module_albums
+
+album_id
+album_name
+album_year
+album_label
+album_format
+album_country
+album_cover
+album_license
+album_buylink
+album_writer
+album_producer
+
+-- module_albums_license
+
+license_id
+license_name
+
+-- module_albums_genres
+
+ag_id
+ag_alias
+ag_genre
+
+-- module_albums_tracks
+
+track_id
+track_name
+track_year
+track_lyrics
+track_writer
+track_producer
+
+-- module_artists_labels
+
+label_id
+label_name
+label_country
+
+-- module_links
+
+link_id
+link_module
+link_assoc
+link_address
+link_name
+link_order
+
+-- module_tweet_config
+
+config_id
+config_bio
+config_username
+
+-- module_tweet
+
+tweet_id
+tweet_assoc
+tweet_content
+tweet_time
+
+-- module_polls
+
+poll_id
+poll_place
+poll_name
+poll_start
+poll_end
+poll_modified
+
+-- module_polls_options
+
+option_id
+option_poll
+option_name
+option_result
+option_time
+
+-- module_polls_vote
+
+vote_id
+vote_uid
+vote_poll
+vote_option
+vote_time
+
+-- events
+
+event_id
+event_alias
+event_subject
+event_tags
+event_start
+event_end
+event_country
+
+-- events_review
+
+review_id
+review_event
+review_uid
+review_time
+review_content
+
+-- events_rate
+
+rate_id
+rate_event
+rate_uid
+rate_value
+rate_time
+
+-- events_rsvp
+
+rsvp_id
+rsvp_event
+rsvp_uid
+rsvp_value
+
+events_attend
+
+attend_id
+attend_event
+attend_uid
+attend_option
+attend_time
+

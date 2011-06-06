@@ -1,0 +1,89 @@
+<!-- INCLUDE page.header.htm -->
+
+<div class="ob t_white" align="left">
+	<div class="ob2 ie-widthfix float-holder">
+	<div class="width-250p float-left">
+		<br />
+		<!-- INCLUDE default.menu.htm -->
+		
+		<div class="soft-blue m6-top no">
+			<div class="dark-blue t_pad8">B&uacute;squeda</div>
+			<div class="child_bnews">
+				<div class="item">
+				<form action="/ds/" method="post">
+				<div class="ie-widthfix"><input class="width-100e" type="text" name="query" value="" /></div>
+				<div class="m6-top" align="right"><input class="submit" type="submit" name="submit" value="Buscar" /></div>
+				</form>
+				</div>
+			</div>
+		</div>
+		
+		<div class="soft-blue m6-top">
+			<div class="dark-blue t_pad8">Cont&aacute;ctenos</div>
+			<div class="child_bnews">
+				<div class="item" align="center">
+				7a. Avenida 3-67 zona 13<br />01013 Guatemala, C.A.<br />PBX: (502) 2429-1400<br />Facultad: (502) 2429-1420
+				<div class="m6-top"><a href="#">revistajuridica&#64;unis.edu.gt</a><br /><a href="http://www.unis.edu.gt/">www.unis.edu.gt</a></div>
+			</div>
+		</div>
+	</div>
+	</div>
+	
+	<div class="width-450p float-right">
+		<div class="ie-widtthfix float-holder b_body-container" id="dynamic_wnd">
+			<div class="a_center"><h1>{V_SUBJECT}</h1></div>
+			<div class="content">
+			
+			<div id="error">
+			<!-- BEGIN error --><div class="error">{error.MESSAGE}</div><!-- END error -->
+			<!-- BEGIN sent --><div class="contact_ok round">{sent.THANKS}</div><!-- END sent -->
+			<!-- BEGIN sent_single --><div class="contact_ok">{sent_single.THANKS}</div><!-- END sent_single -->
+			</div>
+			
+			<!-- BEGIN form -->
+			<script type="text/javascript" language="javascript">
+			// <![CDATA[
+			contact.set('<!-- BEGIN row --><!-- IF row.REQUIRED --><!-- IF row.S_ROW_COUNT -->.<!-- ENDIF -->{row.ALIAS}<!-- ENDIF --><!-- END row -->');
+			// ]]>
+			</script>
+			
+			<form action="{CONCTACT_ACTION}" method="post" onsubmit="return contact.process();">
+			<div class="contact_form ie-widthfix">
+				<!-- BEGIN row -->
+				<!-- IF row.ALIAS == 'ctkey' -->
+				<div align="center">
+					<div id="legend_cav" class="contact_legend">Por seguridad en el cuadro de texto debe ingresar el c&oacute;digo de letras A-Z que aparece en la imagen. No distingue entre may&uacute;sculas y min&uacute;sculas.</div>
+				</div>
+				<div align="center"><div id="ctkey_div"><img id="ctkey_img" src="{S_SERVER}home-fxs.jpg?" /></div><div id="ctkey_tag" class="red">Mostrar otro c&oacute;digo</div><br /></div>
+				<!-- ENDIF -->
+				
+				<div align="center"><div id="legend_{row.ALIAS}" class="contact_legend<!-- IF row.ERROR --> error_marked<!-- ENDIF -->">{row.LEGEND}</div></div>
+				
+				<!-- IF row.TYPE == 'text' -->
+				<input id="field_{row.ALIAS}"<!-- BEGIN attrib --> {attrib.ATTRIB}="{attrib.VALUE}"<!-- END attrib --> value="{row.VALUE}" />
+				<!-- ELSEIF row.TYPE == 'textarea' -->
+				<textarea id="field_{row.ALIAS}" class="ie-widthfix"<!-- BEGIN attrib --><!-- IF attrib.ATTRIB != 'type' --> {attrib.ATTRIB}="{attrib.VALUE}"<!-- ENDIF --><!-- END attrib --> rows="8" />{row.VALUE}</textarea>
+				<!-- ELSEIF row.TYPE == 'yesno' -->
+				Si <input style="width: auto;" type="radio" id="field_{row.ALIAS}_yes"<!-- BEGIN attrib --><!-- IF attrib.ATTRIB != 'type' --> {attrib.ATTRIB}="{attrib.VALUE}"<!-- ENDIF --><!-- END attrib --> value="1" /> No <input style="width: auto;" type="radio" id="field_{row.NAME}_yes"<!-- BEGIN attrib --><!-- IF attrib.ATTRIB != 'type' --> {attrib.ATTRIB}="{attrib.VALUE}"<!-- ENDIF --><!-- END attrib --> value="0" />
+				<!-- ENDIF -->
+				<br /><br />
+				<!-- END row -->
+			<div align="center"><input type="submit" class="contact_submit" name="submit" value="Enviar formulario" /></div>
+			</div>
+			</form>
+			
+			<script type="text/javascript" language="javascript">
+			// <![CDATA[
+			contact.create();
+			// ]]>
+			</script>
+			<!-- END form -->
+			
+			</div>
+		</div>
+	</div>
+
+</div>
+</div>
+
+<!-- INCLUDE page.footer.htm -->

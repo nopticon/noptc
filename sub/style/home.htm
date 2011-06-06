@@ -1,0 +1,44 @@
+<!-- INCLUDE page.header.htm -->
+
+<div id="fullframe">
+	<div class="ie-widthfix float-holder">
+		<div class="float_left w2">
+			<div><img src="{S_VISUAL}logof.png" alt="" /></div>
+			
+			<div id="menu">
+			<ul>
+				<li><a href="{U_HOME}">En portada</a></li>
+				<li><a href="{U_BANDAS}">Bandas</a></li>
+				<li><a href="{U_FORO}">Foro</a></li>
+				<li><a href="{U_CONCIERTOS}">Conciertos</a></li>
+				<li><a href="{U_NOTICIAS}">Noticias</a></li>
+				<li><a href="{U_REPORTAJES}">Reportajes</a></li>
+				<li><a href="{U_PROMOCIONES}">Promociones</a></li>
+				<li><a href="{U_CAMARADAS}">Camaradas</a></li>
+			</ul>
+			</div>
+			
+			<div class="delmes">
+				<div align="center"><img src="{S_VISUAL}octubre.jpg" alt="" /></div>
+				<br /><div align="center"><h3 class="less">Portada de mes</h3></div>
+			</div>
+			
+		</div>
+		<div class="float_right w6">
+
+			<div class="content">
+				<div>{V_SUBJECT}</div>
+				<div>{V_CONTENT}</div>
+			</div>
+
+			<!-- BEGIN auth -->
+			<div>
+			<!-- BEGIN row --><!-- IF row.S_ROW_COUNT -->, <!-- ENDIF --><a href="{row.U_LINK}">{row.V_NAME}</a><!-- END row -->
+			</div>
+			<!-- END auth -->
+
+		</div>
+	</div>
+</div>
+
+<!-- INCLUDE page.footer.htm -->

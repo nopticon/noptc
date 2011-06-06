@@ -1,0 +1,146 @@
+<!-- IF MODE == 'home' -->
+<!-- INCLUDE page.header.htm -->
+
+<div class="float-holder ie-widthfix">
+	<div id="radio_logo" class="float_left"><h1>Radio</h1></div>
+	<div id="radio_play" class="float_right a_center">
+		<object id="radioplayer" width="350" height="61" classid="CLSID:6BF52A52-394A-11d3-B153-00C04F79FAA6" type="application/x-oleobject">
+		<param name="url" value="http://radio.rockrepublik.net/">
+		<param name="SendPlayStateChangeEvents" VALUE="True">
+		<param name="AutoStart" value="False">
+		<param name="stretchToFit" value="True">
+		<param name="uiMode" value="full">
+		<param name="PlayCount" value="1">
+		<param name="AutoRewind" value="0">
+		<embed type="application/x-mplayer2" pluginspage="http://www.microsoft.com/Windows/MediaPlayer/" name="radioplayere" autostart="false" width="350" height="51" transparentstart="1" showstatusbar="1" loop="0" controller="true" src="http://radio.rockrepublik.net/" stretchToFit="true"></embed>
+		</object>
+		<!-- BEGIN hidden -->
+		<div class="rows5_top_1 dark_box a_center">
+			<h2>&iquest;Qu&eacute; est&aacute; sonando?</h2>
+			<div id="now" class="now_auto a_center">Cargando...</div>
+		</div>
+		<!-- END hidden -->
+	</div>
+</div>
+
+<div class="a_center">Agreganos a tu MSN: <strong>radio&#64;</strong></div>
+
+<div id="radio_line"></div>
+<div id="radio_menu">
+	<ul>
+	<li><a id="radio_menu_1" href="#connect">Conectar en vivo</a></li>
+	<li><a id="radio_menu_2" href="#players">Sinton&iacute;zanos</a></li>
+	<li><a id="radio_menu_3" href="#schedule">Programaci&oacute;n</a></li>
+	<li><a id="radio_menu_4" href="#staff">Nuestro equipo</a></li>
+	<li><a id="radio_menu_5" href="#promote">Publicidad</a></li>
+	</ul>
+</div>
+
+<div id="_main">
+	<p>La radio fue fundada en Guatemala, Centro Am&eacute;rica en junio 2006. Podr&aacute;s escucharnos las 24 horas y encontrar&aacute;s m&uacute;sica de todos los sub-g&eacute;neros de rock y metal por medio de nuestros programas en vivo.</p>
+	
+	<div class="float-holder ie-widthfix">
+		<div class="float_left col50">
+			<div id="today" class="rows5_top_1 item_block_3">
+				<div class="section"><h1>Programas de hoy</h1></div>
+				<ul class="ul_none">
+				<!-- BEGIN day -->
+				<!-- IF day.V_DAY == day.V_WEEKDAY -->
+				<!-- BEGIN row -->
+				<!-- IF !(row.V_FREE) -->
+				<li>{row.V_START} a {row.V_END}<br /><span class="fontit">{row.V_NAME}</span><!-- IF row.V_DJ --><br />&raquo; Conducido por {row.V_DJ}<!-- ENDIF --></li>
+				<!-- ENDIF -->
+				<!-- END row -->
+				<!-- ENDIF -->
+				<!-- END day -->
+				</ul>
+			</div>
+		</div>
+		<div class="float_right col50">
+			<!-- BEGIN topics -->
+			<div id="board" class="rows5_top_1 item_block_3">
+				<div class="section"><h1>Anuncios</h1></div>
+				<ul class="ul_none">
+					<!-- BEGIN row -->
+					<li><div><a class="relevant" href="{row.U_TOPIC}">{row.V_SUBJECT}</a></div><div class="cols5_left_1"><a class="uunique" href="{row.PROFILE}">{row.USERNAME}</a></div></li>
+					<!-- END row -->
+				</ul>
+			</div>
+			<!-- END topics -->
+		</div>
+	</div>
+</div>
+
+<div id="_connect">
+	
+</div>
+
+<div id="_players">
+	<div class="z"><h2>Sinton&iacute;zanos</h2></div>
+	
+	<div id="radio_listen" class="rows5_bot_1 ie-widthfix float-holder">
+	<ul class="ul_none">
+		<li><a class="winamp" href="/home/radio/player/listen.pls">Winamp</a></li>
+		<li><a class="windowsmedia" href="/home/radio/player/wmp.asx">Windows Media</a></li>
+		<li><a class="itunes" href="/home/radio/player/itunes.m3u">iTunes</a></li>
+		<li><a class="realplayer" href="/home/radio/player/realplayer.ram">Real Player</a></li>
+		<li><a class="vlc" href="/home/radio/player/vlc.pls">VLC</a></li>
+	</ul>
+	</div>
+</div>
+
+<div id="_schedule">
+	<div id="radio_container" class="float-holder ie-widthfix">
+		<ul id="radio_list">
+		<!-- BEGIN day -->
+		<li id="day_{day.V_DAY}"><a href="#">{day.V_NAME}</a></li>
+		<!-- END day -->
+		</ul>
+	</div>
+	
+	<div id="radio_container2" class="float-holder ie-widthfix">
+		<!-- BEGIN day -->
+		<div id="wday_{day.V_DAY}" class="radio_day_container">
+		<div class="z"><h3>{day.V_NAME}</h3></div>
+		<!-- BEGIN row -->
+			<!-- IF !(row.S_ROW_COUNT) --><ul id="wday_list_{day.V_DAY}"><!-- ENDIF -->
+			<!-- IF row.V_FREE -->
+			<li><a class="time_f" href="#">S&oacute;lo m&uacute;sica {row.V_NAME}</a></li>
+			<!-- ELSE -->
+			<li><a class="time_p" href="{row.V_LINK}">{row.V_NAME}</a></li>
+			<!-- ENDIF -->
+			<!-- IF row.S_ROW_COUNT + 1 == row.S_NUM_ROWS --></ul><!-- ENDIF -->
+			<!-- END row -->
+		</div>
+		<!-- END day -->
+	</div>
+</div>
+
+<div id="_staff">
+	<p><strong>&iquest;Quieres formar parte de nuestro equipo de locutores?</strong><br />
+	
+	<!-- -->
+	Hacemos la invitaci&oacute;n a todos los usuarios que quieran tener su espacio para un programa en nuestra radio.<br /><br />
+	Como parte del crecimiento de la Radio buscamos gente que tenga inter&eacute;s por conducir su programa en nuestra radio, donde podr&aacute; ser escuchada por gente de pa&iacute;ses de todo el mundo, as&iacute; que no pierdas la oportunidad de conocer a mucha gente por medio de la radio.<br /><br />
+	<h2>&iquest;Qu&eacute; necesitas?</h2><ul><li>Disponibilidad de tiempo</li><li>Conexi&oacute;n de 512k</li><li>Winamp 5</li><li>Micr&oacute;fono</li><li>Poder conectarte al msn de la radio mientras se transmite tu programa</li><li>Ser locutor significa que hablar&aacute;s y pondr&aacute;s m&uacute;sica (no debes dejar solo la m&uacute;sica)</li><li>Tendr&aacute;s una audici&oacute;n en vivo para resolver cualquier problema y escucharemos tu desempe&ntilde;o, as&iacute; que debes tener material listo para la audici&oacute;n.</li></ul><br /><br />
+	<h2>Cont&aacute;ctanos</h2>Si cumples con los requisitos, escr&iacute;benos a <strong>info@rkradio.net</strong> con los siguientes datos:<br /><br />
+	<ul><li>Nombre completo</li><li>Nombre de usuario en RK</li><li>Nombre del programa</li><li>Pa&iacute;s de origen</li><li>Horario de transmisi&oacute;n</li><li>G&eacute;neros musicales principales del programa</li><li>Propuesta del programa</li></ul>
+</div>
+
+<div id="_promote">
+	<p><strong>&iquest;Quieres que tu banda suene en RK Radio?</strong><br />
+	Env&iacute;anos a <span class="red">music&#64;rkradio.net</span> tu m&uacute;sica junto con biograf&iacute;a, direcci&oacute;n de contacto y direcci&oacute;n de correo electr&oacute;nico para estar en comunicaci&oacute;n.</p>
+	
+	<p><strong>&iquest;Quieres ser patrocinador de RK Radio?</strong><br />
+	Buscamos gente que tenga un sitio, banda, empresa, negocio u otro y desea promocionarse y puede pagar por publicidad.<br />
+	Env&iacute;anos tu propuesta a <span class="red">sponsor&#64;rkradio.net</span> y nos pondremos en contacto.</p>
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+radio.watch(<!-- BEGIN day --><!-- IF !(day.S_ROW_COUNT) -->{day.V_WEEKDAY}<!-- ENDIF --><!-- END day -->);
+//]]>
+</script>
+
+<!-- INCLUDE page.footer.htm -->
+<!-- ENDIF -->

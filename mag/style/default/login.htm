@@ -1,0 +1,39 @@
+<!-- INCLUDE page.head.htm -->
+
+<div id="header">
+	<div id="header-image">
+		<h1>{L_PAGE_HEADER}</h1>
+		<h2>{L_PAGE_HEADER_SUB}</h2>
+	</div>
+</div>
+
+<form action="{U_SIGNIN}" method="post" id="login">
+<input type="hidden" name="lastpage" value="{REDIRECT_TO}" />
+<!-- BEGIN error -->
+<div class="red a-center">{error.MESSAGE}</div>
+<!-- END error -->
+
+<div id="navigation" class="a-center float-holder ie-widthfix">
+	<h1>Bienvenido al nuevo sistema de soporte de Tecnolog&iacute;a y Mantenimiento</h1>
+	<div id="ticket_info" class="title float-holder ie-widthfix">
+	<strong>Para entrar debe ingresar los datos de su cuenta de correo o webmail.</strong><br /><br />
+	Si ha olvidado su contrase&ntilde;a, puede env&iacute;ar su solicitud de asistencia por correo:<br /><br />
+	Tecnolog&iacute;a: <a class="relevanti" href="mailto:soporte@unis.edu.gt">soporte@unis.edu.gt</a><br />
+	Mantenimiento: <a class="relevanti" href="mailto:servicios@unis.edu.gt">servicios@unis.edu.gt</a>
+	</div>
+</div>
+<br />
+<div class="ie-widthfix float-holder">
+	<div class="float-left w50 a-right"><label for="username">{L_USERNAME}</label></div>
+	<div class="float-right w50 a-left"><input type="text" id="username" name="username" maxlength="25" value="" /></div>
+</div>	
+<br />
+<div class="ie-widthfix float-holder">
+	<div class="float-left w50 a-right"><label for="password">{L_PASSWORD}</label></div>
+	<div class="float-right w50 a-left"><input type="password" id="password" name="password" maxlength="25" value="" /></div>
+</div>
+<br />
+<div class="a-center"><input type="submit" name="submit" value="{L_LOGIN}" /></div>
+</form>
+
+<!-- INCLUDE page.footer.htm -->

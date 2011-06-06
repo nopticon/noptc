@@ -1,0 +1,28 @@
+<!-- INCLUDE page.header.htm -->
+
+<div id="nv">
+	<ul>
+		<li><a id="nv_home" href="{U_HOME}">Portada</a></li>
+		<li><a id="nv_events" href="{U_EVENTS}">Eventos</a></li>
+		<li><a id="nv_gallery" href="{U_GALLERY}">Galeria</a></li>
+		<li><a id="nv_news" href="{U_NEWS}">Noticias</a></li>
+		<li><a id="nv_artists" href="{U_ARTISTS}">Artistas</a></li>
+		<li><a id="nv_contact" href="{U_CONTACT}">Contacto</a></li>
+	</ul>
+</div>
+
+<div id="bdy">
+	<!-- BEGIN ref -->
+	<!-- BEGIN row -->
+	<div id="r{row.REF_ID}"<!-- IF row.S_ROW_COUNT --> class="m_top_big"<!-- ENDIF -->>
+		<h2>{row.REF_SUBJECT}</h2>
+		<div class="date">{row.REF_TIME}</div>
+		<hr />
+		
+		<div class="rc{row.ID}">{row.REF_CONTENT}</div>
+	</div>
+	<!-- END row -->
+	<!-- END ref -->
+</div>
+
+<!-- INCLUDE page.footer.htm -->

@@ -1,0 +1,20 @@
+<!-- INCLUDE page.head.htm -->
+
+<header>
+	<h1 class="_z">{SITE_TITLE}</h1>
+</header>
+
+<div id="container">
+
+<!-- IF NAVIGATION != '' -->
+<div id="navlinks">
+	<h2 class="z">{L_LOCATION}</h2>
+	{NAVIGATION}
+</div>
+<!-- ENDIF -->
+
+<!-- IF IS_MEMBER -->
+<div id="member">
+	<ul><li><a href="{U_LOGOUT}">{L_LOGOUT}</a></li></ul>
+</div>
+<!-- ENDIF -->

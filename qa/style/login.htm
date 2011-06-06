@@ -1,0 +1,56 @@
+<!-- IF IS_GHOST -->
+[login]
+<!-- ELSE -->
+
+<!-- INCLUDE page.header.htm -->
+
+<div id="nv">
+	<ul>
+		<li><a id="nv_home" href="{U_HOME}">Portada</a></li>
+		<li><a id="nv_events" href="{U_EVENTS}">Eventos</a></li>
+		<li><a id="nv_gallery" href="{U_GALLERY}">Galeria</a></li>
+		<li><a id="nv_news" href="{U_NEWS}">Noticias</a></li>
+		<li><a id="nv_artists" href="{U_ARTISTS}">Artistas</a></li>
+		<li><a id="nv_contact" href="{U_CONTACT}">Contacto</a></li>
+	</ul>
+</div>
+
+<div id="bdy">
+	<!-- BEGIN error -->
+	<div class="m_top_big m_btm_big notice a_center">{error.MESSAGE}</div>
+	<!-- END error -->
+
+	<div id="login_frame">
+	<div class="mainframe_pad">
+		<h3>{L_LOGIN_WELCOME}</h3>
+		<form action="{U_SIGNIN}" method="post" id="login">
+			<div class="m_top_mid ie-widthfix float-holder">
+				<div class="float_left w5 a_right"><label for="username">{L_USERNAME}</label></div>
+				<div class="float_right w5 a_left"><input type="text" class="in" id="username" name="username" maxlength="25" value="" /></div>
+			</div>	
+			
+			<div class="m_top_mid ie-widthfix float-holder">
+				<div class="float_left w5 a_right"><label for="password">{L_PASSWORD}</label></div>
+				<div class="float_right w5 a_left"><input type="password" class="in" id="password" name="password" maxlength="25" value="" /></div>
+			</div>
+			<div class="m_top_mid a_center">
+				<input type="hidden" name="lastpage" value="{REDIRECT_TO}" />
+				<input type="submit" class="button" name="submit" value="{L_LOGIN}" />
+			</div>
+		</form>
+	</div>
+	</div>
+
+	<div class="login_info">
+		<p><strong>{L_LOGIN_EXPLAIN}</strong></p>
+		<p>{L_LOGIN_USERDATA}</p>
+	</div>
+
+	<script>
+	$(function() { _._focus('username'); });
+	</script>
+</div>
+
+<!-- INCLUDE page.footer.htm -->
+
+<!-- ENDIF -->

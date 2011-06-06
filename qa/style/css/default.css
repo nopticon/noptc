@@ -1,0 +1,255 @@
+body {
+	background: url(SPATH/bg.jpg) #FEFEFE repeat-x;
+	margin: 0;
+}
+body, div, span, input, textarea, a, dt, select {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+	color: #444;
+	cursor: default;
+}
+h1, h2, h3 {
+	cursor: default;
+}
+form, img {
+	margin: 0;
+	border: 0;
+	vertical-align: middle;
+}
+input {
+	border: 1px solid #DDD;
+	background: #FFF;
+	border-radius: 5px;
+}
+a, label {
+	cursor: pointer;
+}
+a {
+	text-decoration: none;
+}
+a:hover, .underline {
+	text-decoration: underline;
+}
+h1, h2, h3, h4 {
+	font-weight: normal;
+	margin: 0;
+	padding: 0 0 5px 0;
+	font-family: Arial, Helvetica, sans-serif;
+	line-height: 20px;
+}
+h1, h1 a {
+	font-size: 28px;
+	color: #2D5986;
+}
+h2 {
+	font-size: 20px;
+	color: #bb0f54;
+}
+h3 {
+	font-size: 18px;
+}
+h4 {
+	font-size: 1.4em;
+	color: #A52A2A;
+	padding: 0;
+}
+fieldset {
+	border: 0;
+	margin: 0;
+	padding: 5px;
+	border-radius: 5px;
+}
+fieldset dt {
+	width: 30%;
+	margin: 0;
+	margin-right: 5px;
+	padding: 1px;
+	padding-right: 6px;
+	float: left;
+	clear: left;
+	text-align: right;
+	background: #CDD7C6;
+	border: 1px solid #CDD7C6;
+	border-radius: 5px;
+}
+fieldset.clear {
+	padding: 0;
+	border-radius: 0;
+}
+fieldset.none dt {
+	background: transparent;
+	border: 0;
+}
+fieldset dd input, fieldset dd textarea {
+	width: 70%;
+	border-radius: 5px;
+}
+fieldset dd input.combo {
+	width: auto;
+}
+fieldset dl {
+	margin: 6px 0 0 0;
+	padding: 1px;
+}
+hr {
+	border: 0;
+  width: 100%;
+	color: #f00;
+	background-color: #dedcdc;
+	height: 1px;
+}
+
+#gutter {
+	float: left;
+	width: 3%;
+	height: 1px;
+}
+
+#qa {
+	margin-top: 25px;
+	margin-left: 30px;
+}
+#qa a {
+	display: block;
+	text-indent: -5000px;
+	width: 378px;
+	height: 61px;
+	background: url(SPATH/qa.jpg) no-repeat;
+}
+
+#nv {
+	margin-top: 40px;
+	padding-left: 25px;
+	width: 147px;
+	float: left;
+}
+#nv ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+#nv ul li {
+	margin-top: 20px;
+}
+#nv ul li a {
+	text-indent: -5000px;
+	display: block;
+	width: 80px;
+	height: 24px;
+}
+#nv_home {
+	background: url(SPATH/menu.jpg) no-repeat 0 -1px;
+}
+#nv_events {
+	background: url(SPATH/menu.jpg) no-repeat 0 -25px;
+}
+#nv_gallery {
+	background: url(SPATH/menu.jpg) no-repeat 0 -49px;
+}
+#nv_news {
+	background: url(SPATH/menu.jpg) no-repeat 0 -73px;
+}
+#nv_artists {
+	background: url(SPATH/menu.jpg) no-repeat 0 -97px;
+}
+#nv_contact {
+	background: url(SPATH/menu.jpg) no-repeat 0 -121px;
+}
+
+#bdy {
+	width: 600px;
+	margin-top: 30px;
+	float: left;
+	border-left: 1px solid #dedcdc;
+	padding-left: 50px;
+	padding-top: 15px;
+	min-height: 350px;
+}
+
+#bdy .date {
+	color: #555;
+}
+
+#fullframe {
+	width: 80%;
+	margin: 0 auto;
+	padding: 15px;
+	background: #F8F9FB;
+	border: 1px solid #DDD;
+	border-radius: 5px;
+}
+.inframe {
+	margin-top: 35px;
+}
+
+.wt2 { width: 24%; }
+.wt7 { width: 7%; }
+.wi1 { width: 18%; }
+.wi2 { width: 23%; }
+.w2 { width: 20%; }
+.w3 { width: 33%; }
+.w5 { width: 49%; }
+.w6 { width: 66%; }
+.w7 { width: 75%; }
+.w8 { width: 78%; }
+.w9 { width: 95%; }
+.w0 { width: 99%; }
+
+.m_mid { margin: 15px; }
+.m_top_tiny { margin-top: 5px; }
+.m_top_mid { margin-top: 15px; }
+.m_top_big { margin-top: 25px; }
+.m_btm_tiny { margin-bottom: 5px; }
+.m_btm_mid { margin-bottom: 15px; }
+.m_btm_big { margin-bottom: 25px; }
+.m_mns_top { margin-top: -15px; }
+.m_rgt_tiny { margin-right: 3px !important; }
+
+.p_tiny { padding: 5px; }
+.p_mid { padding: 10px; }
+.p_big { padding: 15px; }
+
+.float_left { float: left; }
+.float_right { float: right; }
+.a_left { text-align: left; }
+.a_right { text-align: right; }
+.a_center { text-align: center; }
+
+.notice { color: #990000 !important; }
+.green { color: #247F42; }
+.relevant { font-weight: bold; }
+.row1 { background: #E5E5E5; }
+.row2 { background: #DDD; }
+.row_active { background: #DAE1D5 !important; }
+.row_inactive { background: #E1D6D5  !important; }
+.z { display: none; }
+.radius { border-radius: 5px; }
+.hand { cursor: pointer; }
+
+.float-holder:after { content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0; }
+
+.float-holder { display: inline-block; }
+html[xmlns] .float-holder { display: block; }
+* html .float-holder { height: 1%; }
+* html .ie-widthfix { height: 1%; }
+* html IMG {
+	filter:expression(
+		this.napalmLoaded
+		? "" :
+		(
+			this.src.substr(this.src.length-4)==".png"
+			?
+			(
+				(!this.complete)
+				? "" :
+					this.runtimeStyle.filter=
+					("progid:DXImageTransform.Microsoft.AlphaImageLoader(src='"+this.src+"')")+
+					(this.onbeforeprint="this.runtimeStyle.filter='';this.src='"+this.src+"'").substr(0,0)+
+					String(this.napalmLoaded=true).substr(0,0)+
+					(this.src="SPATH/blank.png").substr(0,0)
+			)
+			:
+			this.runtimeStyle.filter=""
+		)
+	);
+}

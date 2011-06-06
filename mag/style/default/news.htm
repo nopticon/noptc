@@ -1,0 +1,68 @@
+<!-- INCLUDE page.header.htm -->
+
+<div class="hs_news section"><h1>{L_NEWS}</h1></div>
+<!-- IF MODE == 'read' -->
+<div class="hs_sub"><h2>{V_SUBJECT}</h2></div>
+<!-- ENDIF -->
+
+<!-- IF MODE == 'home' -->
+<div id="articles" class="item_block">
+	<!-- BEGIN news -->
+	<ul class="ul_none">
+	<!-- BEGIN row -->
+	<li>
+		<div class="v"><a href="{row.URL}"><img src="{row.IMAGE}" alt="" /></a></div>
+		<div><h2><a class="relevant" href="{row.URL}">{row.SUBJECT}</a></h2></div>
+		<div class="s">{row.DESC}</div>
+	</li>
+	<!-- END row -->
+	</ul>
+	
+	<!-- IF news.NUMS != '' --><div class="pagination">{news.NUMS}</div><!-- ENDIF -->
+	<!-- END news -->
+</div>
+<!-- ELSEIF MODE == 'read' -->
+<div class="comments">
+
+<h3><strong>0</strong><span>.</span> <em><a href="{V_PROFILE}"><img src="{V_USER_AVATAR}" alt="" /></a></em><cite><a href="{V_PROFILE}">{V_USERNAME}</a></cite> <span>{L_REPORT}:</span></h3>
+<blockquote>
+<div class="nowraptext">{V_MESSAGE}</div>
+<p class="dtposted">{V_TIME}</p>
+</blockquote>
+<hr />
+
+<!-- BEGIN posts -->
+<!-- IF posts.NUMS != '' --><div class="pagination">{posts.NUMS}</div><!-- ENDIF -->
+
+<div class="rows5_top">
+<!-- BEGIN row -->
+<div id="comment-{row.S_ROW_COUNT}">
+<h3><strong>{row.S_ROW_COUNT}</strong><span>.</span> <em><!-- IF row.V_MEMBER --><a href="{row.V_PROFILE}"><!-- ENDIF --><img src="{row.V_USER_AVATAR}" alt="" /><!-- IF row.V_MEMBER --></a><!-- ENDIF --></em><cite><!-- IF row.V_MEMBER --><a href="{row.V_PROFILE}"><!-- ENDIF -->{row.V_USERNAME}<!-- IF row.V_MEMBER --></a><!-- ENDIF --></cite> <span>{L_SAID}:</span></h3>
+<blockquote>
+<div class="m">{row.V_MESSAGE}</div>
+<p class="dtposted">{row.V_TIME}</p>
+</blockquote>
+<hr /></div>
+<!-- END row -->
+</div>
+
+<!-- IF posts.NUMS != '' --><div class="pagination">{posts.NUMS}</div><!-- ENDIF -->
+<!-- END posts -->
+</div>
+
+<!-- BEGIN postbox -->
+<!-- BEGIN in -->
+<a name="post"></a>
+<div class="hs_news section"><h1>{L_SEND_POST}</h1></div>
+<div class="rows5_top_2 post_comment">
+<form action="{S_COMMENTS}" method="post" name="post"><input type="hidden" name="ref" value="{in.REF}" />
+<div><label for="comment">{L_POST}</label> - <a class="relevant" onclick="return popup('{S_EMOTICONS}', '_emoticons', 300, 450);" href="{S_EMOTICONS}">{L_EMOTICONS}</a></div>
+<div class="rows5_top_1"><textarea id="comment" name="message" cols="150" rows="10"></textarea></div>
+<div class="rows5_top_1"><input class="submit" type="submit" name="post" value="{L_SUBMIT}" /></div>
+</form>
+</div>
+<!-- END in -->
+<!-- END postbox -->
+<!-- ENDIF -->
+	
+<!-- INCLUDE page.footer.htm -->

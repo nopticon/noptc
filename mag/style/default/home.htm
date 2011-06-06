@@ -1,0 +1,58 @@
+<!-- IF ! IS_GHOST -->
+<!-- INCLUDE page.header.htm -->
+<script>
+_.config.store('u_home', '{U_HOME}');
+</script>
+
+<section class="reference">
+<!-- ENDIF -->
+
+<!-- BEGIN birthday -->
+<div>
+<ul>
+<!-- BEGIN row -->
+<li>{row.NAME}</li>
+<!-- END row -->
+</ul>
+</div>
+<!-- END birthday -->
+
+<!-- BEGIN hide -->
+<!-- BEGIN ref -->
+<div class="float-holder ie-widthfix">
+	<div class="float_left">
+		<!-- BEGIN type -->
+		<div class="filter float-holder ie-widthfix">
+			<ul>
+				<li class="browse_type" id="type_0">Todos</li>
+				<!-- BEGIN row -->
+				<li class="browse_type" id="type_{row.TYPE_ID}">{row.TYPE_NAME}</li>
+				<!-- END row -->
+				<li class="link"><a href="{U_SUGGEST}">Sugerir anotaci&oacute;n</a></li>
+			</ul>
+		</div>
+		<!-- END type -->
+	</div>
+	
+	<!-- IF ref.NUMS != '' -->
+	<div class="pagination float_right">{ref.NUMS}</div>
+	<!-- ENDIF -->
+</div>
+
+<div id="reference">
+<!-- BEGIN row -->
+	<div class="eachpost<!-- IF ! row.S_ROW_COUNT --> twocols<!-- ENDIF -->">
+		<div class="a_center"><img src="/pic/{row.S_ROW_COUNT}.jpg" width="240" alt="" /></div>
+		<h3>{row.REF_TITLE}</h3>
+		<div><span class="time">{row.REF_TIME}</span> . {row.REF_DESC}</div>
+	</div>
+<!-- END row -->
+</div>
+<!-- END ref -->
+<!-- END hide -->
+
+<!-- IF ! IS_GHOST -->
+</section>
+
+<!-- INCLUDE page.footer.htm -->
+<!-- ENDIF -->

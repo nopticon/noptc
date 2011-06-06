@@ -1,0 +1,59 @@
+<!-- INCLUDE page.header.htm -->
+
+<div id="childs">
+<!-- BEGIN tree_child -->
+<ul>
+<!-- BEGIN row -->
+	<li><a href="{row.URL}">{row.TITLE}</a></li>
+<!-- END row -->
+</ul>
+<!-- END tree_child -->
+</div>
+
+<div id="content_area">
+	<div>{V_SUBJECT}</div>
+	<div>{V_CONTENT}</div>
+	
+	<!-- IF V_ALLOW_COMMENTS -->
+	<!-- BEGIN comments_error -->
+	<div class="error">{comments_error.MESSAGE}</div>
+	<!-- END comments_error -->
+	
+	<div id="tree_comments">
+		<!-- BEGIN comments -->
+		<ul>
+		<!-- BEGIN row -->
+		<li>{row.ID}</li>
+		<!-- END row -->
+		</ul>
+		<!-- END comments -->
+		
+		<form action="{U_COMMENTS}" method="post">
+			<input type="hidden" name="is_comment" value="1" />
+			
+			<label for="comment_username">Nombre de usuario</label>
+			<input type="text" id="comment_username" name="comment_username" size="50" />
+			<label for="comment_address">Correo electr&oacute;nico</label>
+			<input type="text" id="comment_address" name="comment_address" size="50" />
+			<label for="comment_website">Sitio web</label>
+			<input type="text" id="comment_website" name="comment_website" size="50" />
+			<label for="comment_message">Mensaje</label>
+			<textarea id="comment_message" name="comment_message" cols="50"></textarea>
+			<label for="comment_xcf">Imagen de seguridad</label>
+			<img src="{U_XCF}" alt="" />
+			<br />
+			<input type="text" id="comment_security" name="comment_security" size="50" />
+			<br /><br />
+			<input type="submit" name="submit" value="Enviar" />
+		</form>
+	</div>
+	<!-- ENDIF -->
+	
+	<!-- BEGIN auth -->
+	<div>
+	<!-- BEGIN row --><!-- IF row.S_ROW_COUNT -->, <!-- ENDIF --><a href="{row.U_LINK}">{row.V_NAME}</a><!-- END row -->
+	</div>
+	<!-- END auth -->
+</div>
+
+<!-- INCLUDE page.footer.htm -->

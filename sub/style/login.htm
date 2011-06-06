@@ -1,0 +1,42 @@
+<!-- IF IS_GHOST -->
+[login]
+<!-- ELSE -->
+<!-- INCLUDE page.header.htm -->
+
+<div id="fullframe">
+	<!-- BEGIN auth -->
+	<div class="auth">
+	<!-- BEGIN row --><!-- IF row.S_ROW_COUNT -->, <!-- ENDIF --><a href="{row.U_AUTH}">{row.V_NAME}</a><!-- END row -->
+	</div>
+	<!-- END auth -->
+	
+	<div id="subject"><h3>{L_LOGIN_WELCOME}</h3></div>
+	<div id="content">
+		<!-- BEGIN error -->
+		<div class="m_btm_big notice a_center">{error.MESSAGE}</div>
+		<!-- END error -->
+		
+		<form action="{U_SIGNIN}" method="post" id="login">
+			<div class="ie-widthfix float-holder">
+				<div class="float_left w5 a_right"><label for="username">{L_USERNAME}</label></div>
+				<div class="float_right w5 a_left"><input type="text" class="in" id="username" name="username" maxlength="25" value="" /></div>
+			</div>	
+			
+			<div class="m_top_mid ie-widthfix float-holder">
+				<div class="float_left w5 a_right"><label for="password">{L_PASSWORD}</label></div>
+				<div class="float_right w5 a_left"><input type="password" class="in" id="password" name="password" maxlength="25" value="" /></div>
+			</div>
+			<div class="m_top_mid a_center">
+				<input type="hidden" name="lastpage" value="{REDIRECT_TO}" />
+				<input type="submit" class="button" name="submit" value="{L_LOGIN}" />
+			</div>
+		</form>
+	</div>
+</div>
+
+<script>
+$(function() { _._focus('username'); });
+</script>
+
+<!-- INCLUDE page.footer.htm -->
+<!-- ENDIF -->

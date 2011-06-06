@@ -1,0 +1,115 @@
+<!-- INCLUDE page.header.htm -->
+
+<h2>{L_EVENTS}</h2>
+
+<!-- IF MODE == 'home' -->
+<!-- BEGIN gallery -->
+<div class="ie-widthfix float-holder">
+
+<!-- BEGIN row -->
+	<div class="boxes<!-- IF row.S_ROW_COUNT --> boxes_s<!-- ENDIF -->">
+		<div class="a_center"><img src="{row.IMAGE}" width="210" alt="{row.TITLE}" /></div>
+		<h3>{row.TITLE}</h3>
+		<div><span class="time">{row.DATE}</span> . {row.DESC}</div>
+	</div>
+<!-- END row -->
+</div>
+<!-- IF gallery.NUMS != '' --><div class="pagination">{gallery.NUMS}</div><!-- ENDIF -->
+<!-- END gallery -->
+
+<!-- BEGIN future1 -->
+<div class="rows5_top_2"><div class="section"><h1>{L_EVENTS_NEXT}</h1></div></div>
+
+<div class="col_1 float_left">
+	<!-- BEGIN type -->
+	<ul class="ul_none">
+	<!-- BEGIN row -->
+		<li class="a_center rows5_top"><a href="#{row.ITEM_ID}"><img src="{row.THUMBNAIL}" alt="" /></a></li>
+	<!-- END row -->
+	</ul>
+	<!-- END type -->
+</div>
+<div class="col_3 float_right">
+	<!-- BEGIN type -->
+	<div<!-- IF type.S_ROW_COUNT --> class="rows5_top rows5_top_3"<!-- ENDIF -->><div class="section"><h1>{type.L_TITLE}</h1></div></div>
+	<ul class="ul_none">
+		<!-- BEGIN row -->
+		<li class="a_center<!-- IF row.S_ROW_COUNT --> rows5_top_3<!-- ENDIF -->"><a name="{row.ITEM_ID}"></a><span class="relevant">{row.TITLE}</span><br />{row.DATE}<br /><br />{L_EVENT_ASSIST}<br /><br /><!-- IF row.U_TOPIC != '' --><a href="{row.U_TOPIC}"><!-- ENDIF --><img src="{row.SRC}" alt="" /><!-- IF row.U_TOPIC != '' --></a><!-- ENDIF --></li>
+		<!-- END row -->
+	</ul>
+	<!-- END type -->
+</div>
+<!-- END future1 -->
+<!-- ELSEIF MODE == 'read' -->
+<div class="section"><h1>{EVENT_SUBJECT} // {EVENT_DATE}</h1></div>
+
+<!-- BEGIN thumbnails -->
+<div class="rows5_top ie-widthfix float-holder">
+<ul class="ul_none">
+	<!-- BEGIN row -->
+	<li class="row_3 col_1f float_left pad_2 a_center"><a href="{row.RIMAGE}" title="{row.FOOTER}"><img src="{row.IMAGE}" alt="" /></a></li>
+	<!-- END row -->
+</ul>
+</div>
+<script type="text/javascript">
+//<![CDATA[
+setupZoom();
+//]]>
+</script>
+<!-- END thumbnails -->
+
+<!-- IF EVENT_COLAB != '' -->
+<div class="rows5_top dark_box a_center">Fotos gracias a: {EVENT_COLAB}</div>
+<!-- ENDIF -->
+
+<!-- BEGIN thumbnails --><!-- IF IMG_PAGES_NUMS != ' <strong>1</strong>' --><div class="pagination">{IMG_PAGES_NUMS}</div><!-- ENDIF --><!-- END thumbnails -->
+
+<!-- BEGIN posts -->
+<div class="section"><h1>{POSTS} <!-- IF POSTS == 1 -->{L_POST}<!-- ELSE -->{L_POSTS}<!-- ENDIF --></h1></div>
+<div class="comments">
+<!-- BEGIN item -->
+<a name="{item.POST_ID}"></a>
+<div id="comment-{item.S_ROW_COUNT}">
+<h3><strong>{item.S_ROW_COUNT}</strong><span>.</span> <em><!-- BEGIN username --><a href="{item.PROFILE}"><!-- END username --><img src="{item.USER_AVATAR}" alt="{item.USERNAME}'s Avatar" /><!-- BEGIN username --></a><!-- END username --></em><cite><!-- BEGIN username --><a href="{item.PROFILE}"><!-- END username -->{item.USERNAME}<!-- BEGIN username --></a><!-- END username --></cite> <span>dijo:</span></h3>
+<blockquote>
+<p>{item.MESSAGE}</p>
+<p class="dtposted">{item.DATETIME}</p>
+</blockquote>
+<hr /></div>
+<!-- END item -->
+</div>
+<!-- IF MSG_PAGES_NUMS != ' <strong>1</strong>' --><div class="pagination">{MSG_PAGES_NUMS}</div><!-- ENDIF -->
+<script type="text/javascript">
+//<![CDATA[
+_.signature([<!-- BEGIN item --><!-- IF item.S_ROW_COUNT -->, <!-- ENDIF -->'{item.POST_ID}'<!-- END item -->]);
+//]]>
+</script>
+<!-- END posts -->
+
+<!-- BEGIN posting_box -->
+<a name="post"></a>
+<div class="rows5_top_2 post_comment">
+<div class="section"><h1>{L_SEND_POST}</h1></div>
+<!-- BEGIN box -->
+<form action="{S_COMMENTS}" method="post" name="post"><input type="hidden" name="ref" value="{box.REF}" />
+<div><label for="comment">{L_POST}</label> - <a class="relevant" onclick="return popup('{S_EMOTICONS}', '_emoticons', 300, 450);" href="{S_EMOTICONS}">{L_EMOTICONS}</a></div>
+<div class="rows5_top_1"><textarea id="comment" name="message" cols="150" rows="10"></textarea></div>
+<div class="rows5_top_1"><input class="submit" type="submit" name="post" value="{L_SUBMIT}" /></div>
+</form>
+<!-- END box -->
+<!-- BEGIN only_registered -->
+<div class="black_box a_center">{only_registered.LEGEND}</div>
+<!-- END only_registered -->
+</div>
+<!-- END posting_box -->
+
+<div id="cache" class="z">
+	<!-- BEGIN thumbnails -->
+	<!-- BEGIN item -->
+	<div><img src="{item.RIMAGE}" alt="" /></div>
+	<!-- END item -->
+	<!-- END thumbnails -->
+</div>
+<!-- ENDIF -->
+	
+<!-- INCLUDE page.footer.htm -->

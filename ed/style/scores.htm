@@ -1,0 +1,72 @@
+<!-- INCLUDE page.header.htm -->
+
+<!-- IF MODE == 'home' -->
+
+<form action="{U_SCORES_X1:CREATE}" method="post">
+
+<!-- BEGIN grades -->
+<select name="grade">
+<!-- BEGIN row -->
+	<option value="{row.SECTION_ID}">{row.GRADE_NAME} - {row.SECTION_NAME}</option>
+<!-- END row -->
+</select>
+<!-- END grades -->
+
+<!-- BEGIN subjects -->
+<select name="subject">
+<!-- BEGIN row -->
+	<option value="{row.SUBJECT_ID}">{row.SUBJECT_NAME}</option>
+<!-- END row -->
+</select>
+<!-- END subjects -->
+
+<!-- BEGIN exams -->
+<select name="exam">
+<!-- BEGIN row -->
+	<option value="{row.EXAM_ID}">{row.EXAM_NAME}</option>
+<!-- END row -->
+</select>
+<!-- END exams -->
+
+<!-- BEGIN years -->
+<select name="year">
+<!-- BEGIN row -->
+	{row.OPTION}
+<!-- END row -->
+</select>
+<!-- END years -->
+
+<input name="submit" type="submit" value="{L_CONTINUE}" />
+
+</form>
+
+<!-- ELSEIF MODE == 'create' -->
+
+<!-- BEGIN students -->
+<form action="{U_SCORES_X1:CREATE}" method="post">
+
+<table>
+	<!-- BEGIN row -->
+	<tr>
+		<td>{row.CARNE}</td>
+		<td>{row.LASTNAME}, {row.FIRSTNAME}</td>
+		<td>
+		<!-- BEGIN input -->
+		<input name="points[{row.ID}]" type="text" value="" />
+		<!-- END input -->
+		<!-- BEGIN text -->
+		{text.POINTS}
+		<!-- END text -->
+		</td>
+	</tr>
+	<!-- END row -->
+</table>
+
+<input name="submit" type="submit" value="{L_SAVE}" />
+
+</form>
+<!-- END students -->
+
+<!-- ENDIF -->
+
+<!-- INCLUDE page.footer.htm -->

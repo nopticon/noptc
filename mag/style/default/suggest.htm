@@ -1,0 +1,91 @@
+<!-- INCLUDE page.header.htm -->
+
+<div class="float-holder ie-widthfix">
+	<div class="boxes">
+		<h3>Artistas</h3>
+		<div>Inscribe a tu grupo para tener un espacio!</div>
+	</div>
+	
+	<div class="boxes boxes_s">
+		<h3>Eventos</h3>
+		<div>Env&iacute;anos el cartel de tu evento o si sabes de uno!</div>
+	</div>
+	
+	<div class="boxes boxes_s">
+		<h3>Noticias</h3>
+		<div>Comparte algo interesante del mundo de la m&uacute;sica y el arte!</div>
+	</div>
+</div>
+
+<div id="s_artists">
+	<form action="{U_SUGGEST_ARTISTS}" method="post">
+		<fieldset>
+			<legend>Artistas</legend>
+			
+			<dl>
+				<dt>Nombre</dt>
+				<dd><input type="text" id="a_name" name="a_name" size="60" maxlength="60" value="{A_NAME}" /></dd>
+			</dl>
+			<dl>
+				<dt>G&eacute;neros</dt>
+				<dd><input type="text" id="a_genre" name="a_genre" size="60" maxlength="60" value="{A_NAME}" /></dd>
+			</dl>
+			<dl>
+				<dt>Pa&iacute;s</dt>
+				<dd><input type="text" id="a_country" name="a_country" size="60" maxlength="60" value="{A_NAME}" /></dd>
+			</dl>
+			<dl>
+				<dt>Sitio web</dt>
+				<dd><input type="text" id="a_website" name="a_website" size="60" maxlength="60" value="{A_WEBSITE}" /></dd>
+			</dl>
+			<dl>
+				<dt>Correo electr&oacute;nico</dt>
+				<dd><input type="text" id="a_email" name="a_email" size="60" maxlength="60" value="{A_EMAIL}" /></dd>
+			</dl>
+		</fieldset>
+	</form>
+</div>
+
+<div id="s_events">
+	<form action="{U_SUGGEST_EVENTS}" method="post">
+		<fieldset>
+			<legend>Eventos</legend>
+			
+			<dl>
+				<dt>T&iacute;tulo</dt>
+				<dd><input type="text" id="e_title" name="e_title" size="60" maxlength="60" value="{E_TITLE}" /></dd>
+			</dl>
+			<dl>
+				<dt>D&iacute;a / hora</dt>
+				<dd><input type="text" id="e_time" name="e_time" size="60" maxlength="60" value="{A_WEBSITE}" /></dd>
+			</dl>
+			<dl>
+				<dt>Artistas participantes</dt>
+				<dd><input type="text" id="e_artists" name="e_artists" size="60" maxlength="60" value="{E_ARTISTS}" /></dd>
+			</dl>
+		</fieldset>
+	</form>
+</div>
+
+<div id="s_news">
+	<form action="{U_SUGGEST_NEWS}" method="post">
+		<fieldset>
+			<legend>Noticias</legend>
+			
+			<dl>
+				<dt>T&iacute;tulo</dt>
+				<dd><input type="text" id="n_title" name="n_title" size="60" maxlength="60" value="{N_TITLE}" /></dd>
+			</dl>
+			<dl>
+				<dt>Resumen</dt>
+				<dd><input type="text" id="n_excerpt" name="n_excerpt" size="60" maxlength="60" value="{N_EXCERPT}" /></dd>
+			</dl>
+			<dl>
+				<dt>Texto</dt>
+				<dd><input type="text" id="n_message" name="n_message" size="60" maxlength="60" value="{N_MESSAGE}" /></dd>
+			</dl>
+		</fieldset>
+	</form>
+</div>
+
+<!-- INCLUDE page.footer.htm -->

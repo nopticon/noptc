@@ -1,0 +1,39 @@
+<!-- INCLUDE page.header.htm -->
+
+<div id="mainframe">
+
+<form action="{_SELF}" method="post">
+
+<label form="url">Direcci&oacute;n web</label>
+<input type="text" id="url" name="url" value="" size="50" /> <input type="submit" name="submit" value="Colorear!" />
+
+</form>
+
+<style>
+.color {
+	float: left;
+	width: 57px;
+	height: 57px;
+	margin-left: 20px;
+	margin-top: 20px;
+}
+.color span {
+	display: block;
+	text-align: center;
+}
+</style>
+
+<!-- BEGIN list -->
+<div class="float-holder ie-widthfix">
+<strong>{list.FILE}</strong><br /><br />
+<ul class="ul_none">
+<!-- BEGIN row -->
+<li class="color" style="background: #{row.COLOR};"><span style="background: #FFF;">{row.COLOR}</span></li>
+<!-- END row -->
+</ul>
+</div>
+<!-- END list -->
+
+</div>
+
+<!-- INCLUDE page.footer.htm -->

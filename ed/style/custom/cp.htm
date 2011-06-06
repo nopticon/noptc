@@ -1,0 +1,44 @@
+<!-- INCLUDE page.header.htm -->
+
+<div id="mainframe" class="ie-widthfix float-holder">
+	
+	<form action="{CREATE_ACTION}" method="post">
+	<!-- BEGIN editing -->
+	<!-- IF editing.S_ROW_COUNT --><br /><br /><!-- ENDIF -->
+	
+	<!-- IF editing.ID == 'subject' -->
+	<div id="d_{editing.ID}" class="create_bold" style="{editing.STYLE}">{editing.LANG}</div>
+	<input type="{editing.TYPE}" class="{editing.CLASS}" id="{editing.ID}" name="{editing.NAME}" value="{editing.VALUE}" style="{editing.STYLE}" />
+	<!-- ELSEIF editing.ID == 'content' -->
+	<div id="d_{editing.ID}" class="create_bold" style="{editing.STYLE}">{editing.LANG}</div>
+	<div id="{editing.ID}_div" style="{editing.STYLE}">{editing.VALUE}</div>
+	<!-- ELSE -->
+		<!-- IF editing.TYPE == 'checkbox' -->
+		<div><input type="{editing.TYPE}" class="{editing.CLASS}" id="{editing.ID}" name="{editing.NAME}" value="{editing.VALUE}" style="{editing.STYLE}"{editing.CHECKED} /> {editing.LANG}</div>
+		<!-- ELSE -->
+		<div>{editing.LANG}</div>
+		<!-- IF editing.TAG == 'input' -->
+			<!-- IF editing.ID == 'template' -->
+			<!-- BEGIN template_d -->
+			<select id="{editing.ID}" name="{edting.NAME}">
+			<!-- BEGIN row -->
+			<option value="{row.FILE}">{row.FILE}</option>
+			<!-- END row -->
+			</select>
+			<!-- END template_d -->
+			<!-- ELSE -->
+			<input type="{editing.TYPE}" class="{editing.CLASS}" id="{editing.ID}" name="{editing.NAME}" value="{editing.VALUE}" style="{editing.STYLE}"{editing.CHECKED} />
+			<!-- ENDIF -->
+		<!-- ELSEIF editing.TAG == 'textarea' -->
+		<textarea id="{editing.ID}" class="{editing.CLASS}" name="{editing.NAME}" rows="{editing.ROWS}" cols="{editing.COLS}" style="{editing.STYLE}">{editing.VALUE}</textarea>
+		<!-- ENDIF -->
+		<!-- ENDIF -->
+	<!-- ENDIF -->
+	<!-- END editing -->
+	<div align="center"><input type="submit" name="submit" value="Guardar cambios" /></div>
+	</form>
+</div>
+</div>
+</div>
+
+<!-- INCLUDE page.footer.htm -->

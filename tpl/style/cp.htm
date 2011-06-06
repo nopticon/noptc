@@ -1,0 +1,34 @@
+<!-- INCLUDE page.header.htm -->
+
+<div id="mainframe">
+
+<h2>{V_SUBJECT}</h2>
+
+<form action="{_SELF}" method="post">
+<!-- BEGIN field -->
+<div class="m_top_tiny field_area float-holder ie-widthfix">
+<!-- IF field.TAG == 'input' -->
+<label for="{field.ID}">{field.LANG}</label>
+<!-- IF field.ID == 'template' -->
+<!-- BEGIN templated -->
+<select id="{field.ID}" name="{edting.NAME}">
+<!-- BEGIN row -->
+<option value="{row.V}">{row.FILE}</option>
+<!-- END row -->
+</select>
+<!-- END templated -->
+<!-- ELSE -->
+<input type="{field.TYPE}" class="{field.CLASS}" id="{field.ID}" name="{field.NAME}" value="{field.VALUE}"{field.CHECKED} />
+<!-- ENDIF -->
+<!-- ELSE IF field.TAG == 'textarea' -->
+<textarea id="{field.ID}" class="{field.CLASS}" name="{field.NAME}" rows="{field.ROWS}" cols="{field.COLS}">{field.VALUE}</textarea>
+<!-- ENDIF -->
+</div>
+<!-- END field -->
+
+<div class="m_top_mid a_center"><input type="submit" name="submit" value="Guardar cambios" /></div>
+</form>
+
+</div>
+
+<!-- INCLUDE page.footer.htm -->

@@ -1,0 +1,17 @@
+RewriteEngine On
+RewriteCond %{QUERY_STRING} base64_encode.*\(.*\) [OR]
+RewriteCond %{QUERY_STRING} GLOBALS(=|\[|\%[0-9A-Z]{0,2}) [OR]
+RewriteCond %{QUERY_STRING} _REQUEST(=|\[|\%[0-9A-Z]{0,2}) [OR]
+RewriteCond %{THE_REQUEST} index.php
+RewriteRule ^.*$ - [F,L]
+
+RewriteRule ^$ index.php?module=tree&args=page:home [nc]
+RewriteRule ^(ext)/([0-9a-z\_\-]+)\.(js|css)$ index.php?module=$1&args=f:$2.e:$3 [nc]
+RewriteRule ^(sign)(in|out|up)/?$ index.php?module=$1&args=x1:$2 [nc]
+RewriteRule ^get/(([0-9a-z\_\-\.]+)\.([a-z0-9]+))?$ index.php?module=tree&args=x1:download.f:$2 [PT,L,QSA]
+RewriteRule ^cp/(create|modify|remove)/([0-9a-z\_\-\.]+)/$ index.php?module=cp&args=x1:$1.page:$2 [PT,L,QSA]
+RewriteRule ^([a-z0-9\-\_]+)\-xs\.jpg$ index.php?module=tree&args=x1:comments.x2:xcf.page:$1 [PT,L,QSA]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([a-z0-9\-\_]+)/?(([0-9a-z\_\.\-\:]+)/?)?$ index.php?module=tree&args=page:$1.$3 [PT,L,QSA]

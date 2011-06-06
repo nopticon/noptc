@@ -1,0 +1,69 @@
+CREATE TABLE _bio (
+	bio_id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	bio_type MEDIUMINT(5) NOT NULL DEFAULT '0',
+	bio_level TINYINT(2) NOT NULL DEFAULT '0',
+	bio_active TINYINT(1) NOT NULL DEFAULT '0',
+	bio_alias VARCHAR(25) NOT NULL DEFAULT '',
+	bio_name VARCHAR(25) NOT NULL DEFAULT '',
+	bio_first VARCHAR(50) NOT NULL DEFAULT '',
+	bio_last VARCHAR(50) NOT NULL DEFAULT '',
+	bio_key VARCHAR(100) NOT NULL DEFAULT '',
+	bio_address INT(11) NOT NULL DEFAULT '0',
+	bio_gender TINYINT(1) NOT NULL DEFAULT '0',
+	bio_birth VARCHAR(8) NOT NULL DEFAULT '',
+	bio_birthlast TINYINT(4) NOT NULL DEFAULT '0',
+	bio_regip VARCHAR(25) NOT NULL DEFAULT '0',
+	bio_regdate INT(11) NOT NULL DEFAULT '0',
+	bio_session_time INT(11) NOT NULL DEFAULT '0',
+	bio_lastpage VARCHAR(255) NOT NULL DEFAULT '0',
+	bio_timezone DECIMAL(5,2) NOT NULL DEFAULT '0.00',
+	bio_dst TINYINT(1) NOT NULL DEFAULT '0',
+	bio_dateformat VARCHAR(14) NOT NULL DEFAULT '',
+	bio_lang VARCHAR(2) NOT NULL DEFAULT '',
+	bio_country INT(11) NOT NULL DEFAULT '0',
+	bio_avatar VARCHAR(100) NOT NULL DEFAULT '0',
+	
+	bio_actkey VARCHAR(25) NOT NULL DEFAULT '0',
+	bio_recovery INT(11) NOT NULL DEFAULT '0',
+	bio_fails MEDIUMINT(5) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS _bio_auth (
+	auth_id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	auth_bio INT(11) NOT NULL DEFAULT '0',
+	auth_field INT(11) NOT NULL DEFAULT '0',
+	auth_value MEDIUMINT(5) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS _bio_auth_fields (
+  field_id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  field_alias VARCHAR(50) NOT NULL,
+  field_name VARCHAR(50) NOT NULL,
+  field_global TINYINT(1) NOT NULL
+) ENGINE=InnoDB;
+
+CREATE TABLE _reference (
+	ref_id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	ref_type TINYINT(3) NOT NULL DEFAULT '0',
+	ref_bio INT(11) NOT NULL DEFAULT '0',
+	ref_important TINYINT(1) NOT NULL DEFAULT '0',
+	ref_approved TINYINT(1) NOT NULL DEFAULT '0',
+	ref_subject VARCHAR(255) NOT NULL DEFAULT '',
+	ref_content VARCHAR(255) NOT NULL DEFAULT '',
+	ref_link VARCHAR(255) NOT NULL DEFAULT '',
+	ref_time INT(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB;
+
+CREATE TABLE _reference_likes (
+	like_id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	like_ref INT(11) NOT NULL,
+	like_bio INT(11) NOT NULL,
+	like_time INT(11) NOT NULL
+) ENGINE = InnoDB;
+
+ALTER TABLE _sessions
+	CHANGE session_user_id session_bio_id MEDIUMINT(8) NOT NULL DEFAULT '0';
+
+UPDATE _config SET config_value = '15' WHERE config_name = 'topics_per_page';
+
+DROP TABLE _members_auth;

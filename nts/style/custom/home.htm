@@ -1,0 +1,53 @@
+<!-- INCLUDE page.head.htm -->
+
+<div id="header">
+	<h1 class="z">{SITE_TITLE}</h1>
+	<h2 class="z">Technology Forging the Future</h2>
+</div>
+
+<div id="container">
+
+<!-- IF IS_MEMBER -->
+<div id="sign">
+	<ul><li><a href="{U_SIGNOUT}">{L_LOGOUT}</a></li></ul>
+</div>
+<!-- ENDIF -->
+
+<div id="content_area">
+	<!-- BEGIN auth -->
+	<div>
+	<!-- BEGIN row --><!-- IF row.S_ROW_COUNT -->, <!-- ENDIF --><a href="{row.U_LINK}">{row.V_NAME}</a><!-- END row -->
+	</div>
+	<!-- END auth -->
+	
+	<h1>Hola, soy Guillermo y programo aplicaciones web.</h1>
+	
+	<p>Trabajo con:</p>
+	
+	<ul>
+		<li>Apache junto con RewriteMod
+		<li>PHP con OOP
+		<li>Ajax
+		<li>JSON
+		<li>MySQL
+		<li>CSS
+		<li>DOM en XHTML y XML
+		<li>Javascript adem&aacute;s de bibliotecas jQuery y Prototype
+		<li>REST
+		<li>RSS
+		<li>SQL standard y dise&ntilde;o con UML
+		<li>SEO
+	</ul>
+	
+	<ul>
+		<li>.NET
+		<li>SQL Server
+		<li>Actionscript b&aacute;sico
+		<li>Pascal
+		<li>Visual Basic
+		<li>Java
+	</ul>
+	
+</div>
+
+<!-- INCLUDE page.footer.htm -->

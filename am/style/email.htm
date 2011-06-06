@@ -1,0 +1,49 @@
+<!-- INCLUDE page.head.htm -->
+
+<div id="page">
+	<div id="content" class="narrowcolumn">
+	
+	<br />
+	<br />
+	
+	<style type="text/css">
+	fieldset {
+		border: 0;
+	}
+	</style>
+	
+	<!-- BEGIN errors -->
+	{errors.MSG}
+	<!-- END errors -->
+	
+	<form action="{_SELF}" method="post" id="login">
+	<fieldset>
+		<dl>
+			<dt>Asunto</dt>
+			<dd><input type="text" id="subject" name="subject" size="60" maxlength="60" value="{SUBJECT}" /></dd>
+
+		</dl>
+		<dl>
+			<dt>Mensaje</dt>
+			<dd><textarea id="message" class="w0" name="message" rows="15" cols="50">{MESSAGE}</textarea></dd>
+		</dl>
+		
+		<div class="m_top_mid a_center">
+			<input type="submit" class="button" name="submit" value="Guardar mis datos" />
+		</div>
+	</fieldset>
+	</form>
+
+	</div>
+
+<hr />
+<div id="footer">
+	<div class="left-col">
+	<br />
+	Copyright &copy; 2010 <a title="Copyright" href="http://www.twckaulitz.com/">&#8220;Los Kaulitz&#8221; twincest fansite</a> | Powered by <a href="http://www.wordpress.org">WordPress</a> &amp; <a title="Nopticon" href="http://www.nopticon.com/">Nopticon</a>. <a href="http://www.twckaulitz.com/wp-login.php">Iniciar sesión</a></div> 
+
+</div>
+</div>
+
+</body>
+</html>

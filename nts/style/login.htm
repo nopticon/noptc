@@ -1,0 +1,33 @@
+<!-- INCLUDE page.head.htm -->
+
+<div id="header">
+	<div id="header-image"><h1 class="z">{SITE_TITLE}</h1></div>
+</div>
+<!-- BEGIN error -->
+
+<div class="m_btm_big m_btm_big notice a_center">{error.MESSAGE}</div>
+<!-- END error -->
+
+<div id="mainframe" class="m_top_mid">
+	<h3>{L_LOGIN_WELCOME}</h3>
+	
+	<form action="{U_SIGNIN}" method="post" id="login">
+	<fieldset>
+		<dl>
+			<dt>{L_USERNAME}</dt>
+			<dd><input type="text" id="username" name="username" size="60" maxlength="60" value="" /></dd>
+		</dl>
+		<dl>
+			<dt>{L_PASSWORD}</dt>
+			<dd><input type="password" id="password" name="password" size="60" maxlength="60" value="" /></dd>
+		</dl>
+		
+		<div class="m_top_mid a_center">
+			<input type="hidden" name="lastpage" value="{REDIRECT_TO}" />
+			<input type="submit" class="button" name="submit" value="{L_LOGIN}" />
+		</div>
+	</fieldset>
+	</form>
+</div>
+
+<!-- INCLUDE page.footer.htm -->

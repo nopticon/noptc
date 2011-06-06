@@ -1,0 +1,48 @@
+<!-- INCLUDE page.header.htm -->
+
+<div id="fullframe">
+	<!-- BEGIN auth -->
+	<div class="auth">
+	<!-- BEGIN row --><!-- IF row.S_ROW_COUNT -->, <!-- ENDIF --><a href="{row.U_AUTH}">{row.V_NAME}</a><!-- END row -->
+	</div>
+	<!-- END auth -->
+	
+	<div id="subject"><h3>{CP_PAGE}</h3></div>
+	<div id="content">
+		
+		<form action="{_SELF}" method="post">
+		<fieldset>
+		<!-- BEGIN field -->
+		<dl>
+			<dt>{field.LANG}</dt>
+			<dd>
+			<!-- IF field.TAG == 'input' -->
+				<!-- IF field.ID == 'template' -->
+				<!-- BEGIN templated -->
+				<select id="_{field.ID}" name="{edting.NAME}">
+				<!-- BEGIN row -->
+				<option value="{row.V}">{row.FILE}</option>
+				<!-- END row -->
+				</select>
+				<!-- END templated -->
+				&nbsp;
+				<!-- ELSE -->
+				<input type="{field.TYPE}" id="_{field.ID}" name="{field.NAME}" value="{field.VALUE}"{field.CHECKED} />
+				<!-- ENDIF -->
+			<!-- ELSE IF field.TAG == 'textarea' -->
+			<textarea id="_{field.ID}" name="{field.NAME}" rows="15" cols="50">{field.VALUE}</textarea>
+			<!-- ENDIF -->
+			</dd>
+		</dl>
+		<!-- END field -->
+
+		<div class="m_top_mid a_center">
+			<input type="submit" class="button" name="submit" value="Guardar cambios" />
+		</div>
+		</fieldset>
+		</form>
+		
+	</div>
+</div>
+
+<!-- INCLUDE page.footer.htm -->

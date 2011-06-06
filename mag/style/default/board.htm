@@ -1,0 +1,86 @@
+<!-- IF ! IS_GHOST -->
+<!-- INCLUDE page.header.htm -->
+<!-- ENDIF -->
+
+<!-- IF MODE == 'home' -->
+<!-- IF ! IS_TOPICS -->
+<div id="f_list"></div>
+
+<!-- BEGIN forums -->
+<div class="float-holder ie-widthfix" id="reference">
+<!-- BEGIN row -->
+	<div class="eachforum eachpost">
+		<h3><a href="{row.U_FORUM}">{row.FORUM_NAME}</a></h3>
+		<div>{row.FORUM_DESC}</div>
+	</div>
+<!-- END row -->
+</div>
+<!-- END forums -->
+
+<!-- BEGIN forums2 -->
+<div class="float-holder ie-widthfix" id="reference">
+<!-- BEGIN row -->
+	<div class="eachpost">
+		<!-- <div class="a_center"><img src="/pic/{row.S_ROW_COUNT}.jpg" width="98%" alt="" /></div> -->
+		<h3>{row.FORUM_NAME}</h3>
+		<div>{row.FORUM_DESC}</div>
+	</div>
+<!-- END row -->
+</div>
+<!-- END forums2 -->
+
+<script>
+_.config.store('u_home', '{U_HOME}');
+</script>
+<!-- ELSE -->
+
+<div id="forum_controls" class="float-holder ie-widthfix">
+	<h2>{FORUM_TITLE}</h2>
+	<div class="return" id="btn_backboard">{L_BOARD_RETURN}</div>
+</div>
+
+<!-- BEGIN create -->
+<div class="board_cp">
+	<input type="button" id="b_topic_create" name="topic_create" value="{L_BOARD_CREATE_TOPIC}" />
+	<!-- BEGIN poll -->
+	<input type="button" id="b_poll_create" name="poll_create" value="{L_CBOARD_CREATE_POLL}" />
+	<!-- END poll -->
+</div>
+<!-- END create -->
+
+<div class="float-holder ie-widthfix">
+	<div class="w7 float_left">
+		<!-- BEGIN topics -->
+		<div class="list_frame" id="topics_{topics.ALIAS}">
+		
+		<!-- IF topics.NUMS != '' -->
+		<div class="a_center pagination">{L_PAGE}{topics.NUMS}</div>
+		<!-- ENDIF -->
+		
+		<ul class="list_lines">
+			<!-- BEGIN row -->
+			<li><a href="{row.TOPIC_URL}">{row.TOPIC_TITLE}</a></li>
+			<!-- END row -->
+		</ul>
+		</div>
+		<!-- END topics -->
+	</div>
+	<div class="wt2 float_right">
+		<!-- BEGIN popular -->
+		<div class="list_frame" id="popular">
+		<ul class="list_lines">
+			<!-- BEGIN row -->
+			<li><a href="{row.TOPIC_URL}">{row.TOPIC_TITLE}</a></li>
+			<!-- END row -->
+		</ul>
+		</div>
+		<!-- END popular -->
+	</div>
+</div>
+
+<!-- ENDIF -->
+<!-- ENDIF -->
+
+<!-- IF ! IS_GHOST -->
+<!-- INCLUDE page.footer.htm -->
+<!-- ENDIF -->

@@ -1,0 +1,60 @@
+Extensible Web Document
+==
+
+* Cache system
+* Template system
+* Database abstraction layer
+* Tree document model
+* Module based document
+* Ajax communication layer
+* Javascript programming
+* User auth system
+* URL mapping
+* Multiple document language
+* Document statistics
+* Menu construct
+* Extensible module system
+
+## Global documents ##
+
+* Custom error pages
+* Tags
+* PDF
+* Password protected
+* Child document list
+
+## Modules per document ##
+
+* To Do list
+* Downloads
+* CSS Color extraction
+* Images
+* Text
+* Events
+* Element lists
+* Code and highlighting
+* RSS reader
+* Search document
+* Gallery
+* Thumbnail linking from other documents
+* Comment system
+* Control panel for comment system
+* Forms
+* Meta information
+* CSS style
+* Access control
+* Email suggest
+* Calendar
+* Notes
+
+## Functions per module (all can be combined) ##
+
+* Element lists
+	* Links
+	* Images
+* Markdown
+
+## Functions ##
+
+Document layout
+Date countdown

@@ -1,0 +1,18 @@
+Charset: iso-8859-1
+
+Hola {USERNAME},
+
+Te saludamos de parte de Rock Republik, estas recibiendo este email como miembro de la comunidad.
+
+{MESSAGE}
+
+Muchas gracias por tu atencion.
+Atentamente,
+
+Rock Republik Networks
+http://www.rockrepublik.net/
+
+###
+
+PRIVACIDAD:
+Si deseas dejar de recibir nuestros emails responde a este mensaje indicandolo.
