@@ -53,6 +53,16 @@ function set_var(&$result, $var, $type, $multibyte = false, $regex = '')
 //
 function request_var($var_name, $default = '', $multibyte = false, $regex = '')
 {
+	if (REQC)
+	{
+		global $core;
+		
+		if (strstr($var_name, $core->v('cookie_name')) && isset($_COOKIE[$var_name]))
+		{
+			$_REQUEST[$var_name] = $_COOKIE[$var_name];
+		}
+	}
+	
 	if (!isset($_REQUEST[$var_name]) || (is_array($_REQUEST[$var_name]) && !is_array($default)) || (is_array($default) && !is_array($_REQUEST[$var_name])))
 	{
 		return (is_array($default)) ? w() : $default;
@@ -174,6 +184,24 @@ function _pre($a, $d = false)
 	{
 		exit;
 	}
+}
+
+function enable_rewrite()
+{
+	global $core;
+	
+	if (!$rewrite = $core->cache_load('rewrite_enabled'))
+	{
+		ob_start();
+		phpinfo(INFO_MODULES);
+		$contents = ob_get_contents();
+		ob_end_clean();
+		
+		$rewrite = strpos($contents, 'mod_rewrite') !== false;
+		$core->cache_store('rewrite_enabled', $rewrite);
+	}
+	
+	return $rewrite;
 }
 
 function _fatal($code = 404, $errfile = '', $errline = '', $errmsg = '', $errno = 0)
@@ -646,6 +674,22 @@ function array_empty($a)
 	return !$response;
 }
 
+function array_least_key($a)
+{
+	$response = false;
+	
+	foreach ($a as $k => $v)
+	{
+		if (f($v))
+		{
+			$response = $k;
+			break;
+		}
+	}
+	
+	return $response;
+}
+
 function array_alias($arr, $alias, $map = false)
 {
 	if (!is_array($arr) || !is_array($alias))
@@ -924,6 +968,15 @@ function _hash($v, $t = 1)
 	return _password($v, $t, 'md5');
 }
 
+function _selected($a, $b, $bool = false)
+{
+	if ($bool === false)
+	{
+		return ($a == $b) ? ' selected="selected"' : '';
+	}
+	return ($a == $b) ? true : false;
+}
+
 function _sf($a = false)
 {
 	global $core;
@@ -1147,6 +1200,11 @@ function _extension($file)
 	return strtolower(str_replace('.', '', substr($file, strrpos($file, '.'))));
 }
 
+function is_post()
+{
+	return (request_method() == 'post');
+}
+
 function is_ghost()
 {
 	return request_var('ghost', 0);
@@ -1198,7 +1256,7 @@ function _linkp($attr, $slash = false, $c = '/')
 		}
 		$url = $arg . ((f($arg) && $slash === true) ? $c : '');
 	} else {
-		$url = $attr . (($slash === true) ? $c : '');
+		$url = $attr . (($slash === true) ? (f($attr) ? $c : '') : '');
 	}
 	return $url;
 }
@@ -2084,8 +2142,8 @@ function _browser($a_browser = false, $a_version = false, $name = false, $d_name
 	global $bio;
 	
 	$browser_list  = 'nokia motorola samsung sonyericsson blackberry iphone htc ';
-	$browser_list .= 'flock firefox konqueror lobo msie netscape navigator mosaic netsurf lynx amaya omniweb ';
-	$browser_list .= 'googlebot googlebot-image feedfetcher-google gigabot msnbot thunderbird fennec minimo ';
+	$browser_list .= 'flock firefox namoroka shiretoko konqueror lobo msie netscape navigator mosaic netsurf lynx amaya omniweb ';
+	$browser_list .= 'googlebot googlebot-image feedfetcher-google gigabot msnbot thunderbird shredder fennec minimo ';
 	$browser_list .= 'minefield chrome wget cheshire safari avant camino seamonkey aol bloglines ';
 	$browser_list .= 'wii playstation netfront opera mozilla gecko ubuntu';
 	
@@ -2359,6 +2417,11 @@ function _xfs($mod = false, $wdir = false, $warg = false)
 {
 	global $bio, $core;
 	
+	if (!$rewrite = enable_rewrite())
+	{
+		_fatal(499, '', '', 'Enable mod_rewrite on Apache.');
+	}
+	
 	require_once(XFS . 'core/modules.php');
 	
 	if ($mod === false)
@@ -2393,9 +2456,23 @@ function _xfs($mod = false, $wdir = false, $warg = false)
 		
 		if (!$found_mod)
 		{
-			_fatal();
+			if ($mod != 'home')
+			{
+				_fatal();
+			}
+			
+			class __home extends xmd
+			{
+				public function home()
+				{
+					return true;
+				}
+			}
 		}
-		require_once($mod_path);
+		else
+		{
+			require_once($mod_path);
+		}
 		
 		$mod_class = '__' . $mod;
 		if (!class_exists($mod_class))
@@ -2546,6 +2623,7 @@ function _xfs($mod = false, $wdir = false, $warg = false)
 	if (!$core->v('skip_browser_detect') && ($list_browser = get_file('./base/need_browser')))
 	{
 		$browser_list = w();
+		
 		foreach ($list_browser as $row)
 		{
 			$e = explode(' :: ', $row);
