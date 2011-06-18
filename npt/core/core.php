@@ -1,7 +1,5 @@
 <?php
 /*
-$Id: v 3.2 2009/11/12 10:43:00 $
-
 <NPT, a web development framework.>
 Copyright (C) <2009>  <NPT>
 
@@ -52,6 +50,16 @@ function set_var(&$result, $var, $type, $multibyte = false, $regex = '')
 //
 function request_var($var_name, $default = '', $multibyte = false, $regex = '')
 {
+	if (REQC)
+	{
+		global $core;
+		
+		if (strstr($var_name, $core->v('cookie_name')) && isset($_COOKIE[$var_name]))
+		{
+			$_REQUEST[$var_name] = $_COOKIE[$var_name];
+		}
+	}
+	
 	if (!isset($_REQUEST[$var_name]) || (is_array($_REQUEST[$var_name]) && !is_array($default)) || (is_array($default) && !is_array($_REQUEST[$var_name])))
 	{
 		return (is_array($default)) ? w() : $default;
@@ -175,6 +183,24 @@ function _pre($a, $d = false)
 	}
 }
 
+function enable_rewrite()
+{
+	global $core;
+	
+	if (!$rewrite = $core->cache_load('rewrite_enabled'))
+	{
+		ob_start();
+		phpinfo(INFO_MODULES);
+		$contents = ob_get_contents();
+		ob_end_clean();
+		
+		$rewrite = strpos($contents, 'mod_rewrite') !== false;
+		$core->cache_store('rewrite_enabled', $rewrite);
+	}
+	
+	return $rewrite;
+}
+
 function _fatal($code = 404, $errfile = '', $errline = '', $errmsg = '', $errno = 0)
 {
 	sql_close();
@@ -231,7 +257,7 @@ function _fatal($code = 404, $errfile = '', $errline = '', $errmsg = '', $errno 
 				$errmsg = '';
 				if (!is_remote())
 				{
-					$errmsg = '<br><br>' . $sql_message;
+					$errmsg = '<br /><br />' . $sql_message;
 				}
 				$sql_message = _utf8($sql_message);
 				
@@ -1227,7 +1253,7 @@ function _linkp($attr, $slash = false, $c = '/')
 		}
 		$url = $arg . ((f($arg) && $slash === true) ? $c : '');
 	} else {
-		$url = $attr . (($slash === true) ? $c : '');
+		$url = $attr . (($slash === true) ? (f($attr) ? $c : '') : '');
 	}
 	return $url;
 }
@@ -1257,7 +1283,7 @@ function _link($mod = '', $attr = false, $ts = true)
 		if ($alias != '') $url = str_replace('www', $alias, $url);
 	}
 	
-	if (strpos($mod, ' ') !== false)
+	if (is_string($mod) && strpos($mod, ' ') !== false)
 	{
 		$attr_v = $attr;
 		
@@ -2382,6 +2408,11 @@ function _xfs($mod = false, $wdir = false, $warg = false)
 {
 	global $user, $core;
 	
+	if (!$rewrite = enable_rewrite())
+	{
+		_fatal(499, '', '', 'Enable mod_rewrite on Apache.');
+	}
+	
 	require_once(XFS . 'core/modules.php');
 	
 	if ($mod === false)
@@ -2416,9 +2447,23 @@ function _xfs($mod = false, $wdir = false, $warg = false)
 		
 		if (!$found_mod)
 		{
-			_fatal();
+			if ($mod != 'home')
+			{
+				_fatal();
+			}
+			
+			class __home extends xmd
+			{
+				public function home()
+				{
+					return true;
+				}
+			}
 		}
-		require_once($mod_path);
+		else
+		{
+			require_once($mod_path);
+		}
 		
 		$mod_class = '__' . $mod;
 		if (!class_exists($mod_class))

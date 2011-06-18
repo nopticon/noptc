@@ -36,6 +36,7 @@ if (@ini_get('register_globals'))
 if (!defined('XFS')) define('XFS', './');
 if (!defined('DD')) define('DD', 'mysql');
 if (!defined('CA')) define('CA', 'sha1');
+if (!defined('REQC')) define('REQC', (strtolower(ini_get('request_order')) == 'gp'));
 
 foreach (array('core', 'dd/' . DD, 'styles', 'session') as $w)
 {
@@ -47,7 +48,7 @@ foreach (array('core', 'dd/' . DD, 'styles', 'session') as $w)
 	@require_once($f_core);
 }
 
-foreach (w('db style user core') as $w) $$w = new $w();
+foreach (w((!defined('NDB') ? 'db ' : '') . 'style user core') as $w) $$w = new $w();
 
 if (!defined('XCORE')) _xfs();
 

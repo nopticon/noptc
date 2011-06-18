@@ -1,7 +1,5 @@
 <?php
 /*
-$Id: v 1.2 2009/07/01 08:17:00 $
-
 <NPT, a web development framework.>
 Copyright (C) <2009>  <NPT>
 
@@ -159,37 +157,27 @@ class _pdf
 		{
 			if ($i) $pos_left += $cell_width;
 			
-			$pos_top = $pos_top_curr = $this->top($prev_top, true);
+			$pos_top = $this->top($prev_top, true);
+			
+			if ($border)
+			{
+				$v_tmp = $min_fontsize + $min_padding;
+				$v_top_tmp = $pos_top - $v_tmp;
+				
+				$v_top = $this->cp->cy($v_top_tmp);
+				$v_right = $this->cp->cy($v_top_tmp + $cell_height);
+				$v_left = $pos_left + $cell_width;
+				
+				$this->cp->line($pos_left, $v_top, $pos_left + $cell_width, $v_top);
+				$this->cp->line($pos_left, $v_top, $pos_left, $v_right);
+				$this->cp->line($v_left, $v_top, $v_left, $v_right);
+				$this->cp->line($pos_left, $v_right, $pos_left + $cell_width, $v_right);
+			}
 			
 			$void_size = count($void);
 			foreach ($void as $j => $row)
 			{
 				$pos_text = $pos_left + $padding;
-				$fill = false;
-				
-				switch ($row['align'])
-				{
-					case 'center':
-						$fill = array(0.8, 0.8, 0.8);
-						break;
-					default:
-						if (strpos($row['text'], ':') === false)
-						{
-							$fill = array(0.8, 0.8, 0.9);
-						}
-						break;
-				}
-				
-				if ($fill !== false)
-				{
-					for ($i = 0, $end = $line_height; $i < $end; $i++)
-					{
-						$y = $this->cp->cy(($pos_top - $fontsize) + $i);
-						$this->cp->setStrokeColor($fill[0], $fill[1], $fill[2]);
-						$this->cp->line($pos_left, $y, $pos_left + $cell_width, $y);
-					}
-					$this->cp->setStrokeColor(0,0,0);
-				}
 				
 				$text_lines = $this->text_wrap($row['text'], $fontsize, $cell_area, $pos_text, $pos_top, $line_height, $row['align'], $row['words']);
 				
@@ -211,21 +199,6 @@ class _pdf
 				}
 				
 				$pos_top += ($fontsize + $padding) * $text_lines;
-			}
-			
-			if ($border)
-			{
-				$v_tmp = $min_fontsize + $min_padding;
-				$v_top_tmp = $pos_top_curr - $v_tmp;
-				
-				$v_top = $this->cp->cy($v_top_tmp);
-				$v_right = $this->cp->cy($v_top_tmp + $cell_height);
-				$v_left = $pos_left + $cell_width;
-				
-				$this->cp->line($pos_left, $v_top, $pos_left + $cell_width, $v_top);
-				$this->cp->line($pos_left, $v_top, $pos_left, $v_right);
-				$this->cp->line($v_left, $v_top, $v_left, $v_right);
-				$this->cp->line($pos_left, $v_right, $pos_left + $cell_width, $v_right);
 			}
 		}
 		
@@ -249,7 +222,13 @@ class _pdf
 			}
 		}
 		
-		$td_def = array('text' => '', 'align' => '', 'words' => 0, 'colspan' => 0, 'rowspan' => 0);
+		$td_def = array(
+			'text' => '',
+			'align' => '',
+			'words' => 0,
+			'colspan' => 0,
+			'rowspan' => 0
+		);
 		
 		$viewport = $this->page_width(30);
 		$cols = count($table[0]);
@@ -261,6 +240,7 @@ class _pdf
 		{
 			$pos_left = $pos_left_orig = $left;
 			$pos_top = $this->top($top) + $accum_top;
+			
 			$max_top = 0;
 			
 			foreach ($tr as $j => $td)

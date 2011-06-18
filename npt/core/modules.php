@@ -1,7 +1,5 @@
 <?php
 /*
-$Id: v 1.6 2009/01/12 15:00:00 $
-
 <NPT, a web development framework.>
 Copyright (C) <2009>  <NPT>
 
@@ -40,7 +38,10 @@ abstract class xmd extends project
 	private $methods = array();
 	public $nav = array();
 	public $page_title_v = array();
-	public $je = array('OK' => '~[200]', 'CN' => '~[201]');
+	public $je = array(
+		'OK' => '~[200]',
+		'CN' => '~[201]'
+	);
 	
 	private $_auth;
 	private $module;
@@ -271,14 +272,14 @@ abstract class xmd extends project
 	
 	final public function auth_access($uid = false)
 	{
-		global $user;
+		global $bio;
 		
 		if ($uid === false)
 		{
-			$uid = $user->v('user_id');
+			$uid = $bio->v('user_id');
 		}
 		
-		if ($user->auth_founder($uid))
+		if ($bio->auth_founder($uid))
 		{
 			return true;
 		}
@@ -367,9 +368,9 @@ abstract class xmd extends project
 	
 	final public function get_errors($glue = '$')
 	{
-		global $user;
+		global $bio;
 	
-		return implode($glue, preg_replace('#^([A-Z_]+)$#e', "(isset(\$user->lang['\\1'])) ? \$user->lang['\\1'] : '\\1'", $this->error));
+		return implode($glue, preg_replace('#^([A-Z_]+)$#e', "(isset(\$bio->lang['\\1'])) ? \$bio->lang['\\1'] : '\\1'", $this->error));
 	}
 	
 	final public function errors()

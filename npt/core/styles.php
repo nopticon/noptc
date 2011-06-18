@@ -1,7 +1,5 @@
 <?php
 /*
-$Id: v 1.3 2006/08/02 16:07:31 $
-
 <NPT, a web development framework.>
 Copyright (C) <2009>  <NPT>
 
@@ -278,7 +276,7 @@ class style
 		{
 			return false;
 		}
-
+		
 		foreach($filename_array as $handle => $filename)
 		{
 			$this->set_filename($handle, $filename);
@@ -398,6 +396,7 @@ class style
 		}
 		else
 		{
+			//echo($code);
 			eval($code);
 		}
 		return true;
@@ -1490,7 +1489,7 @@ class style
 
 	function xs_startup()
 	{
-		global $core, $user;
+		global $core, $bio;
 		
 		if (empty($this->xs_started))
 		{
@@ -1518,8 +1517,8 @@ class style
 				'CDATA_END' => '//]]>' . "\n",
 				
 				'IS_GHOST' => is_ghost(),
-				'IS_MEMBER' => (int) $user->v('is_member'),
-				'S_USERNAME' => _fullname($user->v()),
+				'IS_MEMBER' => (int) $bio->v('is_member'),
+				'S_USERNAME' => _fullname($bio->v()),
 				'S_TIME' => time()
 			);
 		}
@@ -1530,7 +1529,7 @@ class style
 	 */
 	function lang($var)
 	{
-		global $user, $core;
+		global $bio, $core;
 		
 		$prefix = substr($var, 0, 2);
 		$value = substr($var, 2);
@@ -1584,23 +1583,14 @@ class style
 		global $core;
 		
 		$var = strtolower($var);
-		
-		if (function_exists($var))
-		{
-			$call = $var;
-		}
-		elseif (@method_exists($core, $var))
-		{
-			$call = array($core, $var);
-		}
-		else
+		if (!@method_exists($core, $var))
 		{
 			return '<em class="eextf">' . $var . '</em>';
 		}
 		
 		if (!empty($param))
 		{
-			return hook($call, array_map('trim', explode(',', $param)));
+			return hook(array($core, $var), array_map('trim', explode(',', $param)));
 		}
 		
 		return $extf->{$var}();
